@@ -1,21 +1,20 @@
 package studio.mnohrato.cmdextra.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-import studio.mnohrato.cmdextra.TpToPlayer;
-import studio.mnohrato.cmdextra.capabilities.OriPosCap;
+import studio.mnohrato.cmdextra.CmdExtra;
 
-@Mod.EventBusSubscriber( modid = TpToPlayer.MOD_ID )
+@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID )
 public class SuicideCommand
 {
 	
@@ -24,7 +23,7 @@ public class SuicideCommand
 	{
 		CommandDispatcher< CommandSourceStack > dispatcher = event.getDispatcher( );
 		
-		var command = Commands.literal( "suicide" )
+		LiteralArgumentBuilder< CommandSourceStack > command = Commands.literal( "suicide" )
 			.requires( source -> source.hasPermission( 0 ) )
 			.executes( context -> executeSuicide( context , false ) )
 			.then( Commands.literal( "ignore_warning" ).executes( context1 -> executeSuicide( context1 , true ) ) );

@@ -9,13 +9,13 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod( TpToPlayer.MOD_ID)
-public class TpToPlayer
+@Mod( CmdExtra.MOD_ID )
+public class CmdExtra
 {
 	public static final String                    MOD_ID = "cmdextra";
 	public static final Logger                    LOGGER = LogUtils.getLogger( );
 	
-	public TpToPlayer( @NotNull FMLJavaModLoadingContext context )
+	public CmdExtra( @NotNull FMLJavaModLoadingContext context )
 	{
 		IEventBus modEventBus = context.getModEventBus( );
 		

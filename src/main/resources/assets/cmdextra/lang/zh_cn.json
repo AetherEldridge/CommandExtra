@@ -4,6 +4,8 @@
   "commands.mnocmdextra.tp2p.teleported_back": "%s 传送到了他来时的地方。",
   "commands.mnocmdextra.tp2p.memorized": "记住了 %s 的位置，下一次使用“§6/tp2p back§r”时将返回到此处。",
   "commands.mnocmdextra.tp2p.teleported_death": "%s 传送到了上次离世的地方。",
+  "commands.mnocmdextra.tp2p.spawnpoint": "%s 传送到了他的重生点。",
+  "commands.mnocmdextra.tp2p.help": "用法：\n\"/tp2p <玩家>\": 传送到指定玩家的位置。\n\"/tp2p back\": 回到上次执行\"/tp2p <玩家>\"或\"/tp2p spawnpoint\"时的位置。\n\"/tp2p memorize\": 记住当前位置。\n\"/tp2p spawnpoint\": 传送到重生点。",
 
   "commands.mnocmdextra.suicide.warning": "§6警告：如果保留物品栏没有开启，您可能会丢失所有物品。§r\n 如果您已确认，请输入“/suicide ignore_warning”",
 

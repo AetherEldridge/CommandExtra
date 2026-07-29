@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "studio.mnohrato.cmdextra.mixins",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "tptoplayer.refmap.json",
+  "refmap": "cmdextra.refmap.json",
   "mixins": [
   ],
   "client": [

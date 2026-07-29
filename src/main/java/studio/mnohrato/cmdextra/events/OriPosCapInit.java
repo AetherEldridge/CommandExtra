@@ -9,12 +9,12 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-import studio.mnohrato.cmdextra.TpToPlayer;
+import studio.mnohrato.cmdextra.CmdExtra;
 import studio.mnohrato.cmdextra.capabilities.OriPosCap;
 import studio.mnohrato.cmdextra.capabilities.OriPosCapProvider;
 import studio.mnohrato.cmdextra.init.ModCapabilities;
 
-@Mod.EventBusSubscriber( modid = TpToPlayer.MOD_ID )
+@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID )
 public class OriPosCapInit
 {
 	@SubscribeEvent
@@ -49,7 +49,7 @@ public class OriPosCapInit
 	@SubscribeEvent
 	public static void onAttachCapabilities( @NotNull AttachCapabilitiesEvent< Entity > event )
 	{
-		if( event.getObject( ) instanceof Player ) event.addCapability( ResourceLocation.fromNamespaceAndPath( TpToPlayer.MOD_ID , "ori_pos" ) , new OriPosCapProvider( ) );
+		if( event.getObject( ) instanceof Player ) event.addCapability( ResourceLocation.fromNamespaceAndPath( CmdExtra.MOD_ID , "ori_pos" ) , new OriPosCapProvider( ) );
 	}
 	
 }

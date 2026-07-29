@@ -4,10 +4,10 @@ import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-import studio.mnohrato.cmdextra.TpToPlayer;
+import studio.mnohrato.cmdextra.CmdExtra;
 import studio.mnohrato.cmdextra.capabilities.IOriPosCap;
 
-@Mod.EventBusSubscriber( modid = TpToPlayer.MOD_ID , bus = Mod.EventBusSubscriber.Bus.MOD )
+@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID , bus = Mod.EventBusSubscriber.Bus.MOD )
 public class ModCapabilities
 {
 	public static final Capability< IOriPosCap > ORI_POS = CapabilityManager.get( new CapabilityToken<>( ) { } );
