@@ -1,0 +1,11 @@
+{
+  "commands.mnocmdextra.executer_not_found": "Executer Not Found",
+  "commands.mnocmdextra.tp2p.teleported_to": "%s 传送到了 %s 处。",
+  "commands.mnocmdextra.tp2p.teleported_back": "%s 传送到了他来时的地方。",
+  "commands.mnocmdextra.tp2p.memorized": "记住了 %s 的位置，下一次使用“§6/tp2p back§r”时将返回到此处。",
+  "commands.mnocmdextra.tp2p.teleported_death": "%s 传送到了上次离世的地方。",
+
+  "commands.mnocmdextra.suicide.warning": "§6警告：如果保留物品栏没有开启，您可能会丢失所有物品。§r\n 如果您已确认，请输入“/suicide ignore_warning”",
+
+  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s 在此服务器中已禁用。"
+}

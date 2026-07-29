@@ -1,0 +1,11 @@
+{
+  "commands.mnocmdextra.executer_not_found": "Executer Not Found",
+  "commands.mnocmdextra.tp2p.teleported_to": "%s has been teleported back to %s.",
+  "commands.mnocmdextra.tp2p.teleported_back": "%s has been teleported back to where s/he comes.",
+  "commands.mnocmdextra.tp2p.memorized": "Memorized the position where %s is. Will be back here next time using \"§6/tp2p back§r\".",
+  "commands.mnocmdextra.tp2p.teleported_death": "%s has been teleported back to where s/he died last time.",
+
+  "commands.mnocmdextra.suicide.warning": "§6Warning: If the server will not keep players' inventory, your items may disappear.§r\n If you insist to suicide, type \"/suicide ignore_warning\"",
+
+  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s is an illegal item in this server."
+}
