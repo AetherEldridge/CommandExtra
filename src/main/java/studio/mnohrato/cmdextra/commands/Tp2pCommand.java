@@ -34,18 +34,19 @@ public class Tp2pCommand
 		
 		LiteralArgumentBuilder< CommandSourceStack > command = Commands.literal( "tp2p" )
 			.requires( source -> source.hasPermission( 0 ) )
-			.then( Commands.argument( "target" , EntityArgument.players( ) ).executes( Tp2pCommand::executeTp2p ) )
-			.then( Commands.literal( "back" ).executes( Tp2pCommand::executeBack ) )
-			.then( Commands.literal( "memorize" ).executes( Tp2pCommand::executeMem ) )
-			.then( Commands.literal( "spawnpoint" ).executes( Tp2pCommand::executeSpawnpoint ) )
-			.then( Commands.literal( "help" ).executes( Tp2pCommand::executeHelp ) )
-//			.then( Commands.literal( "death" ).executes( Tp2pCommand::executeDeath ) )
+			.then( Commands.argument( "target" , EntityArgument.players( ) ).executes( Tp2pCommand::player ) )
+			.then( Commands.literal( "back" ).executes( Tp2pCommand::back ) )
+			.then( Commands.literal( "memorize" ).executes( Tp2pCommand::memorize ) )
+			.then( Commands.literal( "spawnpoint" ).executes( Tp2pCommand::spawnpoint ) )
+			.then( Commands.literal( "help" ).executes( Tp2pCommand::help ) )
+//			.then( Commands.literal( "home" ).executes( Tp2pCommand::home ) )
+			.then( Commands.literal( "death" ).executes( Tp2pCommand::death ) )
 			;
 		
 		dispatcher.register( command );
 	}
 	
-	private static int executeTp2p( @NotNull CommandContext< CommandSourceStack > context ) throws CommandSyntaxException
+	private static int player( @NotNull CommandContext< CommandSourceStack > context ) throws CommandSyntaxException
 	{
 		Player executer = context.getSource( ).getPlayer( );
 		if( executer == null )
@@ -65,12 +66,12 @@ public class Tp2pCommand
 			EnumSet.noneOf( RelativeMovement.class ) ,
 			0 ,
 			0 );
-		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.teleported_to" , executer.getName( ) , target.getName( ) ) );
+		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.toplayer" , executer.getName( ) , target.getName( ) ) );
 		
 		return 1;
 	}
 	
-	private static int executeBack( @NotNull CommandContext< CommandSourceStack > context )
+	private static int back( @NotNull CommandContext< CommandSourceStack > context )
 	{
 		Player executer = context.getSource( ).getPlayer( );
 		if( executer == null )
@@ -83,12 +84,12 @@ public class Tp2pCommand
 		Level dim = OriPosCap.get( executer , OriPosCap.LAST_TP ).getB( );
 		
 		executer.teleportTo( ( ServerLevel )dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
-		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.teleported_back" , executer.getName( ) ) );
+		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.back" , executer.getName( ) ) );
 		
 		return 1;
 	}
 	
-	private static int executeSpawnpoint( @NotNull CommandContext< CommandSourceStack > context )
+	private static int spawnpoint( @NotNull CommandContext< CommandSourceStack > context )
 	{
 		ServerPlayer executer = context.getSource( ).getPlayer( );
 		if( executer == null )
@@ -108,7 +109,7 @@ public class Tp2pCommand
 		return 1;
 	}
 	
-	private static int executeMem( @NotNull CommandContext< CommandSourceStack > context )
+	private static int memorize( @NotNull CommandContext< CommandSourceStack > context )
 	{
 		Player executer = context.getSource( ).getPlayer( );
 		if( executer == null )
@@ -124,7 +125,7 @@ public class Tp2pCommand
 		return 1;
 	}
 	
-	private static int executeHelp( @NotNull CommandContext< CommandSourceStack > context )
+	private static int help( @NotNull CommandContext< CommandSourceStack > context )
 	{
 		Player executer = context.getSource( ).getPlayer( );
 		if( executer == null )
@@ -137,22 +138,42 @@ public class Tp2pCommand
 		
 		return 1;
 	}
-	
-//	private static int executeDeath( @NotNull CommandContext< CommandSourceStack > context )
+//
+//	private static int home( @NotNull CommandContext< CommandSourceStack > context )
 //	{
-//		Player executer = context.getSource( ).getPlayer( );
+//		ServerPlayer executer = context.getSource( ).getPlayer( );
 //		if( executer == null )
 //		{
 //			context.getSource( ).getServer( ).sendSystemMessage( Component.translatable( "commands.mnocmdextra.executer_not_found" ) );
 //			return 0;
 //		}
 //
-//		Vec3  to  = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getA( );
-//		Level dim = OriPosCap.get( executer , OriPosCap.LAST_TP ).getB( );
+//		OriPosCap.set( executer , OriPosCap.HOME , executer.position( ) , executer.level( ) );
 //
-//		executer.teleportTo( ( ServerLevel )dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
-//		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.teleported_death" , executer ) );
+//		BlockPos    bp  = executer.getRespawnPosition( );
+//		ServerLevel dim = context.getSource( ).getServer( ).getLevel( executer.getRespawnDimension( ) );
+//		if( dim != null || bp != null ) executer.teleportTo( dim , bp.getX( ) , bp.getY( ) , bp.getZ( ) , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
+//
+//		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.home" , executer.getName( ) ) );
 //
 //		return 1;
 //	}
+	
+		private static int death( @NotNull CommandContext< CommandSourceStack > context )
+	{
+		Player executer = context.getSource( ).getPlayer( );
+		if( executer == null )
+		{
+			context.getSource( ).getServer( ).sendSystemMessage( Component.translatable( "commands.mnocmdextra.executer_not_found" ) );
+			return 0;
+		}
+
+		Vec3  to  = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getA( );
+		Level dim = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getB( );
+
+		executer.teleportTo( ( ServerLevel )dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
+		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.tolastdeath" , executer ) );
+
+		return 1;
+	}
 }

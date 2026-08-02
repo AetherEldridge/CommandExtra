@@ -6,7 +6,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import oshi.util.tuples.Pair;
 import studio.mnohrato.cmdextra.init.ModCapabilities;
 
@@ -16,8 +15,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class OriPosCap implements IOriPosCap
 {
-	public static final String                     LAST_TP        = "last_tp";
-	public static final String                     LAST_DEATH     = "last_death";
+	public static final String                     LAST_TP     = "last_tp";
+	public static final String                     LAST_DEATH  = "last_death";
 	public static final Map< Player, CompoundTag > LAST_TP_MAP    = new HashMap<>( );
 	public static final Map< Player, CompoundTag > LAST_DEATH_MAP = new HashMap<>( );
 	private             CompoundTag                posData        = new CompoundTag( );

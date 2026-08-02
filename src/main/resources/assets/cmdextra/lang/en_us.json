@@ -1,10 +1,11 @@
 {
   "commands.mnocmdextra.executer_not_found": "Executer Not Found",
-  "commands.mnocmdextra.tp2p.teleported_to": "%s has been teleported back to %s.",
-  "commands.mnocmdextra.tp2p.teleported_back": "%s has been teleported back to where s/he comes.",
+  "commands.mnocmdextra.tp2p.toplayer": "%s has been teleported back to %s.",
+  "commands.mnocmdextra.tp2p.back": "%s has been teleported back to where s/he comes.",
   "commands.mnocmdextra.tp2p.memorized": "Memorized the position where %s is. Will be back here next time using \"§6/tp2p back§r\".",
-  "commands.mnocmdextra.tp2p.teleported_death": "%s has been teleported back to where s/he died last time.",
+  "commands.mnocmdextra.tp2p.tolastdeath": "%s has been teleported back to where s/he died last time.",
   "commands.mnocmdextra.tp2p.spawnpoint": "%s has been teleported back to his/her spawnpoint.",
+  "commands.mnocmdextra.tp2p.home": "%s has been teleported to his/her base.",
   "commands.mnocmdextra.tp2p.help": "Usage:\n\"/tp2p <player>\": Teleport yourself to the given player.\n\"/tp2p back\": Teleport back to the position where you ran \"/tp2p <player>\" or \"/tp2p spawnpoint\" last time.\n\"/tp2p memorize\": Memorize the current position.\n\"/tp2p spawnpoint\": Teleport yourself to your spawnpoint.",
 
   "commands.mnocmdextra.suicide.warning": "§6Warning: If the server will not keep players' inventory, your items may disappear.§r\n If you insist to suicide, type \"/suicide ignore_warning\"",

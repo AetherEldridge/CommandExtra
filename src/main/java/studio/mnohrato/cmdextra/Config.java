@@ -23,10 +23,6 @@ public class Config
 	@SubscribeEvent
 	public static void onConfigReload( ModConfigEvent.Reloading event )
 	{
-		if( event.getConfig( ).getSpec( ) == SPEC )
-		{
-			// ...
-		}
 	}
 	
 	@SubscribeEvent
