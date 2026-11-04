@@ -25,24 +25,17 @@ public class SuicideCommand
 		
 		LiteralArgumentBuilder< CommandSourceStack > command = Commands.literal( "suicide" )
 			.requires( source -> source.hasPermission( 0 ) )
-			.executes( context -> executeSuicide( context , false ) )
-			.then( Commands.literal( "ignore_warning" ).executes( context1 -> executeSuicide( context1 , true ) ) );
+			.executes( SuicideCommand::executeSuicide );
 		
 		dispatcher.register( command );
 	}
 	
-	private static int executeSuicide( @NotNull CommandContext< CommandSourceStack > context , boolean ignoreWarning ) throws CommandSyntaxException
+	private static int executeSuicide( @NotNull CommandContext< CommandSourceStack > context )
 	{
 		Player executer = context.getSource( ).getPlayer( );
 		if( executer == null )
 		{
 			context.getSource( ).getServer( ).sendSystemMessage( Component.translatable( "commands.mnocmdextra.executer_not_found" ) );
-			return 0;
-		}
-		
-		if( !ignoreWarning )
-		{
-			executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.suicide.warning" ) );
 			return 0;
 		}
 		

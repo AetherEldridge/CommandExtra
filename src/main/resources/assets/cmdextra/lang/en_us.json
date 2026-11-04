@@ -12,7 +12,6 @@
 
   "commands.mnocmdextra.banned_item.illegal_item_removed": "%s is an illegal item in this server.",
 
-
   "commands.mnocmdextra.success": "Wrote %1$s entries in %2$s file(s) to %3$s",
   "commands.mnocmdextra.unknown_namespace": "Unknown namespace: %s",
   "commands.mnocmdextra.unknown_type": "Unknown registry type: %s",
