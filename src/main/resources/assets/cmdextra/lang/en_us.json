@@ -6,7 +6,7 @@
   "commands.mnocmdextra.tp2p.tolastdeath": "%s has been teleported back to where s/he died last time.",
   "commands.mnocmdextra.tp2p.spawnpoint": "%s has been teleported back to his/her spawnpoint.",
   "commands.mnocmdextra.tp2p.home": "%s has been teleported to his/her base.",
-  "commands.mnocmdextra.tp2p.help": "Usage:\n\"/tp2p <player>\": Teleport yourself to the given player.\n\"/tp2p back\": Teleport back to the position where you ran \"/tp2p <player>\" or \"/tp2p spawnpoint\" last time.\n\"/tp2p memorize\": Memorize the current position.\n\"/tp2p spawnpoint\": Teleport yourself to your spawnpoint.\n\"/tp2p death\": Teleport to where you died last time. 注意：致命危险可能仍然存在！",
+  "commands.mnocmdextra.tp2p.help": "Usage:\n\"/tp2p <player>\": Teleport yourself to the given player.\n\"/tp2p back\": Teleport back to the position where you ran \"/tp2p <player>\" or \"/tp2p spawnpoint\" last time.\n\"/tp2p memorize\": Memorize the current position.\n\"/tp2p spawnpoint\": Teleport yourself to your spawnpoint.\n\"/tp2p death\": Teleport to where you died last time. Warning: Deadly danger may still exist!",
 
   "commands.mnocmdextra.suicide.warning": "§6Warning: If the server will not keep players' inventory, your items may disappear.§r\n If you insist to suicide, type \"/suicide ignore_warning\"",
 
