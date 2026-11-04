@@ -13,11 +13,11 @@ import studio.mnohrato.cmdextra.init.ModCapabilities;
 public class OriPosCapProvider implements ICapabilityProvider, INBTSerializable< CompoundTag >
 {
 	private final LazyOptional< IOriPosCap > instance = LazyOptional.of( OriPosCap::new );
-	private       CompoundTag                pos      = new CompoundTag( );
+	private final CompoundTag pos = new CompoundTag( );
 	
 	@NotNull
 	@Override
-	public < T > LazyOptional< T > getCapability( @NotNull Capability< T > cap , @Nullable Direction side )
+	public < T > LazyOptional< T > getCapability( @NotNull Capability< T > cap, @Nullable Direction side )
 	{
 		return cap == ModCapabilities.ORI_POS ? instance.cast( ) : LazyOptional.empty( );
 	}

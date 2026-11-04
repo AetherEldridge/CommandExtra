@@ -19,14 +19,17 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class OriPosCap implements IOriPosCap
 {
-	public static final String                     LAST_TP        = "last_tp";
-	public static final String                     LAST_DEATH     = "last_death";
-	public static final Map< Player, CompoundTag > LAST_TP_MAP    = new HashMap<>( );
+	public static final String LAST_TP = "last_tp";
+	public static final String LAST_DEATH = "last_death";
+	public static final Map< Player, CompoundTag > LAST_TP_MAP = new HashMap<>( );
 	public static final Map< Player, CompoundTag > LAST_DEATH_MAP = new HashMap<>( );
-	private             CompoundTag                posData        = new CompoundTag( );
+	private CompoundTag posData = new CompoundTag( );
 	
 	@Override
-	public CompoundTag getPosData( ) { return posData; }
+	public CompoundTag getPosData( )
+	{
+		return posData;
+	}
 	
 	@Override
 	public void setPosData( CompoundTag tag )
@@ -34,7 +37,7 @@ public class OriPosCap implements IOriPosCap
 		posData = tag;
 	}
 	
-	public static void set( @NotNull Player player , String posType , Vec3 pos , ServerLevel level )
+	public static void set( @NotNull Player player, String posType, Vec3 pos, ServerLevel level )
 	{
 		player.getCapability( ModCapabilities.ORI_POS ).ifPresent( ( data ) -> {
 			
@@ -44,27 +47,27 @@ public class OriPosCap implements IOriPosCap
 			
 			if( pos != null )
 			{
-				posData.putDouble( "x" , pos.x );
-				posData.putDouble( "y" , pos.y );
-				posData.putDouble( "z" , pos.z );
-				posData.putString( "d" , level.dimension( ).location( ).toString( ) );
+				posData.putDouble( "x", pos.x );
+				posData.putDouble( "y", pos.y );
+				posData.putDouble( "z", pos.z );
+				posData.putString( "d", level.dimension( ).location( ).toString( ) );
 				
-				if( posType.equals( LAST_TP ) ) LAST_TP_MAP.put( player , posData );
-				if( posType.equals( LAST_DEATH ) ) LAST_DEATH_MAP.put( player , posData );
+				if( posType.equals( LAST_TP ) ) LAST_TP_MAP.put( player, posData );
+				if( posType.equals( LAST_DEATH ) ) LAST_DEATH_MAP.put( player, posData );
 			}
 			else
 			{
-				data.getPosData( ).put( posType , new CompoundTag( ) );
+				data.getPosData( ).put( posType, new CompoundTag( ) );
 			}
 			
 		} );
 	}
 	
 	@NotNull
-	@Contract( "_ , _ -> new" )
-	public static Pair< Vec3 , ServerLevel > get( @NotNull Player player , String posType )
+	@Contract( "_ , _ -> new")
+	public static Pair< Vec3, ServerLevel > get( @NotNull Player player, String posType )
 	{
-		AtomicReference< Vec3 >        pos   = new AtomicReference<>( null );
+		AtomicReference< Vec3 > pos = new AtomicReference<>( null );
 		AtomicReference< ServerLevel > level = new AtomicReference<>( null );
 		
 		player.getCapability( ModCapabilities.ORI_POS ).ifPresent( ( data ) -> {
@@ -72,9 +75,9 @@ public class OriPosCap implements IOriPosCap
 			CompoundTag posData = data.getPosData( ).getCompound( posType );
 			if( posData.isEmpty( ) || !posData.contains( "x" ) || !posData.contains( "y" ) || !posData.contains( "z" ) ) return;
 			
-			pos.set( new Vec3( posData.getDouble( "x" ) , posData.getDouble( "y" ) , posData.getDouble( "z" ) ) );
-			level.set( player.getServer( ).getLevel( ResourceKey.create( Registries.DIMENSION , ResourceLocation.parse( posData.getString( "d" ) ) ) ) );
+			pos.set( new Vec3( posData.getDouble( "x" ), posData.getDouble( "y" ), posData.getDouble( "z" ) ) );
+			level.set( player.getServer( ).getLevel( ResourceKey.create( Registries.DIMENSION, ResourceLocation.parse( posData.getString( "d" ) ) ) ) );
 		} );
-		return new Pair<>( pos.get( ) , level.get( ) );
+		return new Pair<>( pos.get( ), level.get( ) );
 	}
 }

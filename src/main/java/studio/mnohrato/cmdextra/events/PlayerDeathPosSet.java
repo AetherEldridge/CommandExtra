@@ -10,13 +10,15 @@ import org.jetbrains.annotations.NotNull;
 import studio.mnohrato.cmdextra.CmdExtra;
 import studio.mnohrato.cmdextra.capabilities.OriPosCap;
 
-@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID )
+@Mod.EventBusSubscriber(
+	modid = CmdExtra.MOD_ID
+)
 public class PlayerDeathPosSet
 {
 	@SubscribeEvent
 	public static void onPlayerDeath( @NotNull LivingDeathEvent event )
 	{
 		if( !( event.getEntity( ) instanceof Player player ) ) return;
-		OriPosCap.set( player , OriPosCap.LAST_DEATH , player.position( ) , ( ServerLevel )player.level( ) );
+		OriPosCap.set( player, OriPosCap.LAST_DEATH, player.position( ), ( ServerLevel )player.level( ) );
 	}
 }

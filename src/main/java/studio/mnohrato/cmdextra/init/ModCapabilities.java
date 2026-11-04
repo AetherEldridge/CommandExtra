@@ -7,7 +7,10 @@ import org.jetbrains.annotations.NotNull;
 import studio.mnohrato.cmdextra.CmdExtra;
 import studio.mnohrato.cmdextra.capabilities.IOriPosCap;
 
-@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID , bus = Mod.EventBusSubscriber.Bus.MOD )
+@Mod.EventBusSubscriber(
+	modid = CmdExtra.MOD_ID,
+	bus = Mod.EventBusSubscriber.Bus.MOD
+)
 public class ModCapabilities
 {
 	public static final Capability< IOriPosCap > ORI_POS = CapabilityManager.get( new CapabilityToken<>( ) { } );

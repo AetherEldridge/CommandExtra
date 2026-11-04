@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import studio.mnohrato.cmdextra.CmdExtra;
 
-@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID )
+@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID)
 public class SuicideCommand
 {
 	
