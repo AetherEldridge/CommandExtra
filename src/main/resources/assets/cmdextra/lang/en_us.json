@@ -10,5 +10,12 @@
 
   "commands.mnocmdextra.suicide.warning": "§6Warning: If the server will not keep players' inventory, your items may disappear.§r\n If you insist to suicide, type \"/suicide ignore_warning\"",
 
-  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s is an illegal item in this server."
+  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s is an illegal item in this server.",
+
+
+  "commands.mnocmdextra.success": "Wrote %1$s entries in %2$s file(s) to %3$s",
+  "commands.mnocmdextra.unknown_namespace": "Unknown namespace: %s",
+  "commands.mnocmdextra.unknown_type": "Unknown registry type: %s",
+  "commands.mnocmdextra.ambiguous_type": "Registry type '%1$s' is ambiguous: %2$s",
+  "commands.mnocmdextra.write_failed": "Failed to write the registry list: %s"
 }

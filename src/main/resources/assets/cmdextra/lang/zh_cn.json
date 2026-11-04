@@ -10,5 +10,11 @@
 
   "commands.mnocmdextra.suicide.warning": "§6警告：如果保留物品栏没有开启，您可能会丢失所有物品。§r\n 如果您已确认，请输入“/suicide ignore_warning”",
 
-  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s 在此服务器中已禁用。"
+  "commands.mnocmdextra.banned_item.illegal_item_removed": "%s 在此服务器中已禁用。",
+
+  "commands.mnocmdextra.success": "已将 %1$s 个条目写入 %2$s 个文件，输出位置：%3$s",
+  "commands.mnocmdextra.unknown_namespace": "未知的命名空间：%s",
+  "commands.mnocmdextra.unknown_type": "未知的注册类型：%s",
+  "commands.mnocmdextra.ambiguous_type": "注册类型“%1$s”存在歧义：%2$s",
+  "commands.mnocmdextra.write_failed": "写入注册项列表失败：%s"
 }

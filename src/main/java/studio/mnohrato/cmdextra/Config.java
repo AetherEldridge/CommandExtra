@@ -1,32 +1,54 @@
 package studio.mnohrato.cmdextra;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.minecraftforge.fml.loading.FMLPaths;
+import org.jetbrains.annotations.NotNull;
 
-@Mod.EventBusSubscriber(
-	modid = CmdExtra.MOD_ID,
-	bus = Mod.EventBusSubscriber.Bus.MOD
-)
-public class Config
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public final class Config
 {
+	public static final String DEFAULT_OUTPUT_PATH = "local/registylist";
+	
 	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder( );
-	static final         ForgeConfigSpec         SPEC;
+	private static final ForgeConfigSpec.ConfigValue< String > OUTPUT_PATH = BUILDER
+		.comment( "Directory where the reglist command writes its CSV files.", "Relative paths are resolved against the game directory." )
+		.define( "output_path", DEFAULT_OUTPUT_PATH );
 	
-	static
-	{
-		SPEC = BUILDER.build( );
-	}
+	public static final ForgeConfigSpec SPEC = BUILDER.build( );
 	
-	@SubscribeEvent
-	public static void onConfigReload( ModConfigEvent.Reloading event )
+	/**
+	 * @return the configured output directory as an absolute, normalised path
+	 */
+	@NotNull
+	public static Path outputDirectory( )
 	{
-	}
-	
-	@SubscribeEvent
-	static void onLoad( ModConfigEvent event )
-	{
+		String configured;
+		try
+		{
+			configured = OUTPUT_PATH.get( );
+		}
+		catch( IllegalStateException ignored )
+		{
+			configured = DEFAULT_OUTPUT_PATH;
+		}
+		
+		if( configured == null || configured.isBlank( ) ) configured = DEFAULT_OUTPUT_PATH;
+		
+		Path path;
+		try
+		{
+			path = Paths.get( configured );
+		}
+		catch( InvalidPathException exception )
+		{
+			throw new IllegalArgumentException( "Invalid output_path: " + configured, exception );
+		}
+		
+		if( !path.isAbsolute( ) ) path = FMLPaths.GAMEDIR.get( ).resolve( path );
+		
+		return path.normalize( );
 	}
 }
