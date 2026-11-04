@@ -6,7 +6,7 @@
   "commands.mnocmdextra.tp2p.tolastdeath": "%s 传送到了上次离世的地方。",
   "commands.mnocmdextra.tp2p.spawnpoint": "%s 传送到了他的重生点。",
   "commands.mnocmdextra.tp2p.home": "%s 传送到了他的基地。",
-  "commands.mnocmdextra.tp2p.help": "用法：\n\"/tp2p <玩家>\": 传送到指定玩家的位置。\n\"/tp2p back\": 回到上次执行\"/tp2p <玩家>\"或\"/tp2p spawnpoint\"时的位置。\n\"/tp2p memorize\": 记住当前位置。\n\"/tp2p spawnpoint\": 传送到重生点。",
+  "commands.mnocmdextra.tp2p.help": "用法：\n\"/tp2p <玩家>\": 传送到指定玩家的位置。\n\"/tp2p back\": 回到上次执行\"/tp2p <玩家>\"或\"/tp2p spawnpoint\"时的位置。\n\"/tp2p memorize\": 记住当前位置。\n\"/tp2p spawnpoint\": 传送到重生点。\n\"/tp2p death\": 传送到上次死亡的位置。注意：致命危险可能仍然存在！",
 
   "commands.mnocmdextra.suicide.warning": "§6警告：如果保留物品栏没有开启，您可能会丢失所有物品。§r\n 如果您已确认，请输入“/suicide ignore_warning”",
 

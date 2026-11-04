@@ -55,7 +55,7 @@ public class Tp2pCommand
 			return 0;
 		}
 		
-		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , executer.level( ) );
+		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , ( ServerLevel )executer.level( ) );
 		
 		Player target = EntityArgument.getPlayer( context , "target" );
 		
@@ -80,10 +80,10 @@ public class Tp2pCommand
 			return 0;
 		}
 		
-		Vec3  to  = OriPosCap.get( executer , OriPosCap.LAST_TP ).getA( );
-		Level dim = OriPosCap.get( executer , OriPosCap.LAST_TP ).getB( );
+		Vec3        to  = OriPosCap.get( executer , OriPosCap.LAST_TP ).getA( );
+		ServerLevel dim = OriPosCap.get( executer , OriPosCap.LAST_TP ).getB( );
 		
-		executer.teleportTo( ( ServerLevel )dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
+		executer.teleportTo( dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
 		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.back" , executer.getName( ) ) );
 		
 		return 1;
@@ -98,7 +98,7 @@ public class Tp2pCommand
 			return 0;
 		}
 		
-		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , executer.level( ) );
+		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , ( ServerLevel )executer.level( ) );
 		
 		BlockPos    bp  = executer.getRespawnPosition( );
 		ServerLevel dim = context.getSource( ).getServer( ).getLevel( executer.getRespawnDimension( ) );
@@ -118,7 +118,7 @@ public class Tp2pCommand
 			return 0;
 		}
 		
-		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , executer.level( ) );
+		OriPosCap.set( executer , OriPosCap.LAST_TP , executer.position( ) , ( ServerLevel )executer.level( ) );
 		
 		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.memorized" , executer.getName( ) ) );
 		
@@ -169,10 +169,10 @@ public class Tp2pCommand
 		}
 
 		Vec3  to  = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getA( );
-		Level dim = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getB( );
+		ServerLevel dim = OriPosCap.get( executer , OriPosCap.LAST_DEATH ).getB( );
 
-		executer.teleportTo( ( ServerLevel )dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
-		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.tolastdeath" , executer ) );
+		executer.teleportTo( dim , to.x , to.y , to.z , EnumSet.noneOf( RelativeMovement.class ) , 0 , 0 );
+		executer.sendSystemMessage( Component.translatable( "commands.mnocmdextra.tp2p.tolastdeath" , executer.getName() ) );
 
 		return 1;
 	}

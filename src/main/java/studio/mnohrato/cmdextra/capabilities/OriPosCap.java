@@ -1,6 +1,10 @@
 package studio.mnohrato.cmdextra.capabilities;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -15,8 +19,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class OriPosCap implements IOriPosCap
 {
-	public static final String                     LAST_TP     = "last_tp";
-	public static final String                     LAST_DEATH  = "last_death";
+	public static final String                     LAST_TP        = "last_tp";
+	public static final String                     LAST_DEATH     = "last_death";
 	public static final Map< Player, CompoundTag > LAST_TP_MAP    = new HashMap<>( );
 	public static final Map< Player, CompoundTag > LAST_DEATH_MAP = new HashMap<>( );
 	private             CompoundTag                posData        = new CompoundTag( );
@@ -30,7 +34,7 @@ public class OriPosCap implements IOriPosCap
 		posData = tag;
 	}
 	
-	public static void set( @NotNull Player player , String posType , Vec3 pos , Level level )
+	public static void set( @NotNull Player player , String posType , Vec3 pos , ServerLevel level )
 	{
 		player.getCapability( ModCapabilities.ORI_POS ).ifPresent( ( data ) -> {
 			
@@ -57,20 +61,20 @@ public class OriPosCap implements IOriPosCap
 	}
 	
 	@NotNull
-	@Contract( "_ , _ -> new")
-	public static Pair< Vec3, Level > get( @NotNull Player player , String posType )
+	@Contract( "_ , _ -> new" )
+	public static Pair< Vec3 , ServerLevel > get( @NotNull Player player , String posType )
 	{
-		AtomicReference< Vec3 >  pos   = new AtomicReference<>( null );
-		AtomicReference< Level > level = new AtomicReference<>( null );
-		;
+		AtomicReference< Vec3 >        pos   = new AtomicReference<>( null );
+		AtomicReference< ServerLevel > level = new AtomicReference<>( null );
+		
 		player.getCapability( ModCapabilities.ORI_POS ).ifPresent( ( data ) -> {
 			if( !posType.equals( LAST_TP ) && !posType.equals( LAST_DEATH ) ) return;
 			CompoundTag posData = data.getPosData( ).getCompound( posType );
 			if( posData.isEmpty( ) || !posData.contains( "x" ) || !posData.contains( "y" ) || !posData.contains( "z" ) ) return;
 			
 			pos.set( new Vec3( posData.getDouble( "x" ) , posData.getDouble( "y" ) , posData.getDouble( "z" ) ) );
-			level.set( player.level( ) );
+			level.set( player.getServer( ).getLevel( ResourceKey.create( Registries.DIMENSION , ResourceLocation.parse( posData.getString( "d" ) ) ) ) );
 		} );
-		return new Pair<>( pos.get( ) , player.level( ) );
+		return new Pair<>( pos.get( ) , level.get( ) );
 	}
 }

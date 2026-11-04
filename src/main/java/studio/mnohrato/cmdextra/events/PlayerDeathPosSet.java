@@ -1,5 +1,6 @@
 package studio.mnohrato.cmdextra.events;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -16,6 +17,6 @@ public class PlayerDeathPosSet
 	public static void onPlayerDeath( @NotNull LivingDeathEvent event )
 	{
 		if( !( event.getEntity( ) instanceof Player player ) ) return;
-		OriPosCap.set( player , OriPosCap.LAST_DEATH , player.position( ) , player.level( ) );
+		OriPosCap.set( player , OriPosCap.LAST_DEATH , player.position( ) , ( ServerLevel )player.level( ) );
 	}
 }
