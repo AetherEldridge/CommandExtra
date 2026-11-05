@@ -7,3 +7,5 @@
 Read in [**English (US)**](README-en_us.md)
 
 以[简体中文 (中国大陆)](README-zh_cn.md)阅读
+
+Читать по [русскому языку (Россия)](README-ru_ru.md)
