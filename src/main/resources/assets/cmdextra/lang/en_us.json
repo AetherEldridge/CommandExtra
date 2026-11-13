@@ -16,5 +16,7 @@
   "commands.mnocmdextra.unknown_namespace": "Unknown namespace: %s",
   "commands.mnocmdextra.unknown_type": "Unknown registry type: %s",
   "commands.mnocmdextra.ambiguous_type": "Registry type '%1$s' is ambiguous: %2$s",
-  "commands.mnocmdextra.write_failed": "Failed to write the registry list: %s"
+  "commands.mnocmdextra.write_failed": "Failed to write the registry list: %s",
+
+  "commands.mnocmdextra.tpdim.to": "%s has been teleported to %s in %s."
 }

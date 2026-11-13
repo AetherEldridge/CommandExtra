@@ -16,5 +16,7 @@
   "commands.mnocmdextra.unknown_namespace": "未知的命名空间：%s",
   "commands.mnocmdextra.unknown_type": "未知的注册类型：%s",
   "commands.mnocmdextra.ambiguous_type": "注册类型“%1$s”存在歧义：%2$s",
-  "commands.mnocmdextra.write_failed": "写入注册项列表失败：%s"
+  "commands.mnocmdextra.write_failed": "写入注册项列表失败：%s",
+
+  "commands.mnocmdextra.tpdim.to": "%s 传送到了 %s，位于维度 %s."
 }

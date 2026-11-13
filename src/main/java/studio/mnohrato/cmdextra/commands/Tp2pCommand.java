@@ -1,6 +1,5 @@
 package studio.mnohrato.cmdextra.commands;
 
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -13,26 +12,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.RelativeMovement;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-import studio.mnohrato.cmdextra.CmdExtra;
 import studio.mnohrato.cmdextra.capabilities.OriPosCap;
 
 import java.util.EnumSet;
 
-@Mod.EventBusSubscriber( modid = CmdExtra.MOD_ID)
 public class Tp2pCommand
 {
-	@SubscribeEvent
-	public static void onRegisterCommands( @NotNull RegisterCommandsEvent event )
+	public static LiteralArgumentBuilder< CommandSourceStack > build( )
 	{
-		CommandDispatcher< CommandSourceStack > dispatcher = event.getDispatcher( );
-		
-		LiteralArgumentBuilder< CommandSourceStack > command = Commands.literal( "tp2p" )
+		return Commands.literal( "tp2p" )
 			.requires( source -> source.hasPermission( 0 ) )
 			.then( Commands.argument( "target", EntityArgument.players( ) ).executes( Tp2pCommand::player ) )
 			.then( Commands.literal( "back" ).executes( Tp2pCommand::back ) )
@@ -41,8 +31,6 @@ public class Tp2pCommand
 			.then( Commands.literal( "help" ).executes( Tp2pCommand::help ) )
 			//			.then( Commands.literal( "home" ).executes( Tp2pCommand::home ) )
 			.then( Commands.literal( "death" ).executes( Tp2pCommand::death ) );
-		
-		dispatcher.register( command );
 	}
 	
 	private static int player( @NotNull CommandContext< CommandSourceStack > context )

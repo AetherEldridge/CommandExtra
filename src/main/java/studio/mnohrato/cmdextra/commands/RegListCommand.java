@@ -11,8 +11,6 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.jetbrains.annotations.NotNull;
@@ -28,9 +26,6 @@ import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(
-	modid = CmdExtra.MOD_ID
-)
 public class RegListCommand
 {
 	public static final String ALL_NAMESPACES = "all_namespace";
@@ -39,8 +34,7 @@ public class RegListCommand
 	private static RegistryCatalog cachedCatalog;
 	private static RegistryAccess cachedRegistryAccess;
 	
-	@NotNull
-	public static LiteralArgumentBuilder< CommandSourceStack > buildCommand( )
+	public static LiteralArgumentBuilder< CommandSourceStack > build( )
 	{
 		return Commands
 			.literal( "reglist" )
@@ -49,12 +43,6 @@ public class RegListCommand
 				.argument( "namespace", StringArgumentType.word( ) )
 				.suggests( RegListCommand::suggestNamespaces )
 				.then( Commands.argument( "type", StringArgumentType.greedyString( ) ).suggests( RegListCommand::suggestTypes ).executes( RegListCommand::execute ) ) );
-	}
-	
-	@SubscribeEvent
-	public static void onRegisterCommands( @NotNull RegisterCommandsEvent event )
-	{
-		event.getDispatcher( ).register( buildCommand( ) );
 	}
 	
 	private static int execute( @NotNull CommandContext< CommandSourceStack > context )

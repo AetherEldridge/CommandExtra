@@ -20,6 +20,6 @@ public class CmdExtra
 	{
 		IEventBus modEventBus = context.getModEventBus( );
 		
-		context.registerConfig( ModConfig.Type.COMMON, Config.SPEC );
+		context.registerConfig( ModConfig.Type.COMMON, Config.spec( ) );
 	}
 }
